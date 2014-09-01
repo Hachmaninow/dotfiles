@@ -28,4 +28,4 @@ done
 mkdir -p ~/.vim/colors
 cp $dir/railscasts.vim ~/.vim/colors
 
-cp $dir/start-zsh.sh
+cp $dir/start-zsh.sh ~
