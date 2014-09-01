@@ -1,5 +1,13 @@
+
 # Path to your oh-my-zsh configuration.
-ZSH=$HOME/.oh-my-zsh
+case "$hostname" in
+  macbook)
+    ZSH=$HOME/.oh-my-zsh
+    ;;
+  *)
+    ZSH=/home/hman/.oh-my-zsh
+    ;;
+esac
 
 # stop complaining about unmatched wildcards
 unsetopt nomatch
@@ -16,6 +24,7 @@ plugins=(git git-flow-avh mvn osx redis-cli vagrant autojump bundler)
 
 source $ZSH/oh-my-zsh.sh
 
+# Make page-up/-down search for entries having the same prefix as currently entered.
 bindkey "^[[5~" history-beginning-search-backward
 bindkey "^[[6~" history-beginning-search-forward
 bindkey \^U backward-kill-line
