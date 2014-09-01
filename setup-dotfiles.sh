@@ -27,3 +27,5 @@ done
 # copy other files
 mkdir -p ~/.vim/colors
 cp $dir/railscasts.vim ~/.vim/colors
+
+cp $dir/start-zsh.sh
