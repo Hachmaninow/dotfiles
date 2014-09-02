@@ -1,13 +1,10 @@
 
 # Path to your oh-my-zsh configuration.
-case "$hostname" in
-  macbook)
-    ZSH=$HOME/.oh-my-zsh
-    ;;
-  *)
-    ZSH=/home/hman/.oh-my-zsh
-    ;;
-esac
+if [ "$HOST" = "macbook" ]; then
+  ZSH=$HOME/.oh-my-zsh
+else
+  ZSH=/home/hman/.oh-my-zsh
+fi
 
 # stop complaining about unmatched wildcards
 unsetopt nomatch
@@ -31,22 +28,20 @@ bindkey \^U backward-kill-line
 
 export EDITOR=vim
 
-case "$hostname" in
-  macbook)
-    export PATH="$PATH:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bini:$HOME/.rvm/bin"
+if [ "$HOST" = "macbook" ]; then
+  export PATH="$PATH:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bini:$HOME/.rvm/bin"
 
-    export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
-    export JRUBY_OPTS="-J-Xmx4096m -J-XX:MaxMetaspaceSize=2048m -J-Dfile.encoding=UTF-8 -J-XX:+TieredCompilation -J-XX:TieredStopAtLevel=1 -X-C -Xcompile.mode=OFF"
-    # export JRUBY_OPTS="-J-Xmx4096m -J-XX:MaxPermSize=2048m -J-Dfile.encoding=UTF-8 -J-XX:+TieredCompilation -J-XX:TieredStopAtLevel=1 -X-C"
-    source /usr/local/Cellar/autojump/21.6.9/etc/autojump.zsh
-    [[ -s `brew --prefix`/etc/autojump.sh ]] && . `brew --prefix`/etc/autojump.sh
+  export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
+  export JRUBY_OPTS="-J-Xmx4096m -J-XX:MaxMetaspaceSize=2048m -J-Dfile.encoding=UTF-8 -J-XX:+TieredCompilation -J-XX:TieredStopAtLevel=1 -X-C -Xcompile.mode=OFF"
+  # export JRUBY_OPTS="-J-Xmx4096m -J-XX:MaxPermSize=2048m -J-Dfile.encoding=UTF-8 -J-XX:+TieredCompilation -J-XX:TieredStopAtLevel=1 -X-C"
+  source /usr/local/Cellar/autojump/21.6.9/etc/autojump.zsh
+  [[ -s `brew --prefix`/etc/autojump.sh ]] && . `brew --prefix`/etc/autojump.sh
 
-    # metrigo specific aliases
-    alias release='mvn deploy; rake build; gem inabox'
-    alias update='bundle exec update_metrigo_deps.rb'
-    alias check='mvn package; rake'
-    ;;
-esac
+  # metrigo specific aliases
+  alias release='mvn deploy; rake build; gem inabox'
+  alias update='bundle exec update_metrigo_deps.rb'
+  alias check='mvn package; rake'
+fi
 
 export WORDCHARS='*?_-[]~=&!$%^(){}<>' 
 
