@@ -1,33 +1,65 @@
-set nocompatible          " get rid of Vi compatibility mode. SET FIRST!
-filetype plugin indent on " filetype detection[ON] plugin[ON] indent[ON]
-set t_Co=256              " enable 256-color mode.
-syntax enable             " enable syntax highlighting (previously syntax on).
-colorscheme railscasts    " set colorscheme
-set number                " show line numbers
-set laststatus=2          " last window always has a statusline
-filetype indent on        " activates indenting for files
-set nohlsearch            " Don't continue to highlight searched phrases.
-set incsearch             " But do highlight as you type your search.
-set ignorecase            " Make searches case-insensitive.
-set ruler                 " Always show info along bottom.
-set autoindent            " auto-indent
-set tabstop=2             " tab spacing
-set softtabstop=2         " unify
-set shiftwidth=2          " indent/outdent by 4 columns
-set shiftround            " always indent/outdent to the nearest tabstop
-set expandtab             " use spaces instead of tabs
-set smarttab              " use tabs at the start of a line, spaces elsewhere
-set nowrap                " don't wrap text
+" Gt rid of Vi compatibility mode. SET FIRST!
+set nocompatible
 
+" Pathogen
+execute pathogen#infect()
+call pathogen#helptags()
+
+" Basic settings
+set nowrap                " don't wrap text
+set laststatus=2          " last window always has a statusline
 set clipboard=unnamed
 
-tab sball
-set switchbuf=usetab,newtab
+" Colors
+set background=dark
+colorscheme solarized
 
-" tab navigation using ctrl-tab-key
+" Use the same symbols as TextMate for tabstops and EOLs
+" TODO: incompatible with Mac 
+" set listchars=tab:▸\ ,eol:¬
+
+" Tab settings
+set tabstop=2             " tab spacing
+set softtabstop=2         " unify
+set shiftwidth=2          " indent/outdent by 2 columns
+set expandtab             " use spaces instead of tabs
+set shiftround            " always indent/outdent to the nearest tabstop
+
+" Tab navigation using ctrl-tab-key
 nnoremap <C-S-tab> :tabprevious<CR>
 nnoremap <C-tab>   :tabnext<CR>
 nnoremap <C-t>     :tabnew<CR>
 inoremap <C-S-tab> <Esc>:tabprevious<CR>i
 inoremap <C-tab>   <Esc>:tabnext<CR>i
 inoremap <C-t>     <Esc>:tabnew<CR>
+
+" Buffers
+set hidden                " automatically hide unsaved buffer
+
+" Programming
+set number                " show line numbers
+set ruler                 " Always show info along bottom.
+syntax enable             " enable syntax highlighting (previously syntax on).
+filetype on               " Enable file type detection
+filetype indent on        " activates indenting for files
+filetype plugin indent on " filetype detection[ON] plugin[ON] indent[ON]
+set autoindent            " auto-indent
+
+" Search
+set ignorecase            " Make searches case-insensitive.
+set nohlsearch            " Don't continue to highlight searched phrases.
+set incsearch             " But do highlight as you type your search.
+
+" Only do this part when compiled with support for autocommands
+if has("autocmd")
+
+  " Syntax of these languages is fussy over tabs Vs spaces
+  autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+
+  " Customisations based on house-style (arbitrary)
+  autocmd FileType html setlocal ts=2 sts=2 sw=2 expandtab
+  autocmd FileType css setlocal ts=2 sts=2 sw=2 expandtab
+
+  " Treat .rss files as XML
+  autocmd BufNewFile,BufRead *.rss setfiletype xml
+endif
