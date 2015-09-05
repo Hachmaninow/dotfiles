@@ -19,11 +19,16 @@ echo "done"
 # move any existing dotfiles in homedir to dotfiles_old directory, then create symlinks from the homedir to any files in the ~/dotfiles directory specified in $files
 for file in $files; do
     echo "Creating symlink to $file in home directory."
-    ln -s $dir/$file ~/.$file
+    ln -f -s $dir/$file ~/.$file
 done
 
 ##########
 
 # copy other files
+
+# vim color-scheme
 mkdir -p ~/.vim/colors
-cp $dir/railscasts.vim ~/.vim/colors
+cp -f $dir/railscasts.vim ~/.vim/colors
+
+# start zsh as any user using oh-my-zsh configuration from hman
+cp -f $dir/start-zsh.sh ~
