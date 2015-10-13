@@ -1,4 +1,4 @@
-" Gt rid of Vi compatibility mode. SET FIRST!
+" Get rid of Vi compatibility mode. SET FIRST!
 set nocompatible
 
 " Pathogen
@@ -11,6 +11,7 @@ set laststatus=2          " last window always has a statusline
 set clipboard=unnamed
 
 " Colors
+set t_Co=256
 set background=dark
 colorscheme solarized
 
