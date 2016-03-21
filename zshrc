@@ -1,10 +1,6 @@
 
 # Path to your oh-my-zsh configuration.
-if [ "$HOST" = "macbook" ]; then
-  ZSH=$HOME/.oh-my-zsh
-else
-  ZSH=/home/hman/.oh-my-zsh
-fi
+ZSH=$HOME/.oh-my-zsh
 
 # stop complaining about unmatched wildcards
 unsetopt nomatch
