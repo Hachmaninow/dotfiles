@@ -6,13 +6,29 @@ execute pathogen#infect()
 call pathogen#helptags()
 
 " Basic settings
+
 set nowrap                " don't wrap text
 set laststatus=2          " last window always has a statusline
+
+" Clipboard / Copy and paste
 set clipboard=unnamed
+
+" Use CTRL-Q to do what CTRL-V used to do
+noremap <C-Q>   	<C-V>
+
+" CTRL-X is Cut
+vnoremap <C-x> "+x
+
+" CTRL-C is Copy
+vnoremap <C-c> "+y
+
+" CTRL-V is Paste
+map <C-v>   	"+gP
+cmap <C-v>  	<C-R>+
 
 " Colors
 set t_Co=256
-set background=dark
+set background=light
 colorscheme solarized
 
 " Use the same symbols as TextMate for tabstops and EOLs

@@ -6,8 +6,8 @@
 
 ########## Variables
 
-dir=~/Projects/dotfiles                    # dotfiles directory
-files="zshrc vimrc"    # list of files/folders to symlink in homedir
+dir=~/projects/dotfiles                    # dotfiles directory
+files="zshrc vimrc tmux.conf"    # list of files/folders to symlink in homedir
 
 ##########
 
