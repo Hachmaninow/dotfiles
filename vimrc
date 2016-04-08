@@ -1,12 +1,34 @@
 " Get rid of Vi compatibility mode. SET FIRST!
 set nocompatible
+filetype off
+
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+
+Plugin 'tpope/vim-sensible'
+Plugin 'tpope/vim-fugitive'
+Plugin 'kien/ctrlp.vim'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'bling/vim-bufferline'
+
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+
+let g:airline_theme='solarized'
 
 " Pathogen
-execute pathogen#infect()
-call pathogen#helptags()
+"execute pathogen#infect()
+"call pathogen#helptags()
 
 " Basic settings
 
+set encoding=utf-8
 set nowrap                " don't wrap text
 set laststatus=2          " last window always has a statusline
 
