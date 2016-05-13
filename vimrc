@@ -14,6 +14,7 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'bling/vim-bufferline'
+Plugin 'altercation/vim-colors-solarized'
 
 
 " All of your Plugins must be added before the following line
@@ -22,12 +23,7 @@ filetype plugin indent on    " required
 
 let g:airline_theme='solarized'
 
-" Pathogen
-"execute pathogen#infect()
-"call pathogen#helptags()
-
 " Basic settings
-
 set encoding=utf-8
 set nowrap                " don't wrap text
 set laststatus=2          " last window always has a statusline
@@ -46,10 +42,10 @@ vnoremap <C-c> "+y
 
 " CTRL-V is Paste
 map <C-v>   	"+gP
-cmap <C-v>  	<C-R>+
 
 " Colors
 set t_Co=256
+
 set background=light
 colorscheme solarized
 
@@ -72,6 +68,9 @@ inoremap <C-S-tab> <Esc>:tabprevious<CR>i
 inoremap <C-tab>   <Esc>:tabnext<CR>i
 inoremap <C-t>     <Esc>:tabnew<CR>
 
+" Remap K to split line
+:nnoremap K i<CR><Esc>
+
 " Buffers
 set hidden                " automatically hide unsaved buffer
 
@@ -86,7 +85,7 @@ set autoindent            " auto-indent
 
 " Search
 set ignorecase            " Make searches case-insensitive.
-set nohlsearch            " Don't continue to highlight searched phrases.
+set nohlsearch              " Don't continue to highlight searched phrases.
 set incsearch             " But do highlight as you type your search.
 
 " Only do this part when compiled with support for autocommands

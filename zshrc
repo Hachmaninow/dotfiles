@@ -25,7 +25,7 @@ antigen bundle mvn
 antigen bundle redis-cli
 antigen bundle autojump
 antigen bundle lein
-antigen bundle colorize
+#antigen bundle colorize
 antigen bundle history
 antigen bundle supervisor
 antigen bundle tmux
@@ -37,7 +37,7 @@ antigen bundle bundler
 antigen bundle rake
 antigen bundle gem
 antigen bundle debian
-antigen bundle sudo
+#antigen bundle sudo
 antigen bundle djui/alias-tips
 
 # Syntax highlighting bundle.
@@ -82,6 +82,7 @@ export JRUBY_OPTS="-J-Xmx4096m -J-XX:MaxMetaspaceSize=2048m -J-Dfile.encoding=UT
 ######################################################################
 
 alias g='git status'
+alias gg="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 
 function cm {
   git diff CHANGES.md | grep -E '^\+\*' | sed 's/^...//' | paste -sd';'
