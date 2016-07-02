@@ -25,7 +25,8 @@ let g:airline_theme='solarized'
 
 " Basic settings
 set encoding=utf-8
-set nowrap                " don't wrap text
+set wrap                  " wrap text...
+set linebreak             " ...but only at specific characters
 set laststatus=2          " last window always has a statusline
 
 " Clipboard / Copy and paste
@@ -75,7 +76,8 @@ inoremap <C-t>     <Esc>:tabnew<CR>
 set hidden                " automatically hide unsaved buffer
 
 " Programming
-set number                " show line numbers
+set number               
+set relativenumber      
 set ruler                 " Always show info along bottom.
 syntax enable             " enable syntax highlighting (previously syntax on).
 filetype on               " Enable file type detection
