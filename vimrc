@@ -16,6 +16,8 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'bling/vim-bufferline'
 Plugin 'altercation/vim-colors-solarized'
 
+Plugin 'guns/vim-clojure-static'
+Plugin 'tpope/fireplace.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -47,7 +49,7 @@ map <C-v>   	"+gP
 " Colors
 set t_Co=256
 
-set background=light
+set background=dark
 colorscheme solarized
 
 " Use the same symbols as TextMate for tabstops and EOLs
@@ -101,5 +103,8 @@ if has("autocmd")
   autocmd FileType css setlocal ts=2 sts=2 sw=2 expandtab
 
   " Treat .rss files as XML
-  autocmd BufNewFile,BufRead *.rss setfiletype xml
+  autocmd BufNewFile,BufFilePre,BufRead *.rss set filetype=xml
+
+  " Tread .md files as markdown
+  autocmd BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
 endif
