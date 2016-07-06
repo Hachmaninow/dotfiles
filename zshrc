@@ -25,7 +25,7 @@ antigen bundle mvn
 antigen bundle redis-cli
 antigen bundle autojump
 antigen bundle lein
-#antigen bundle colorize
+antigen bundle colorize
 antigen bundle history
 antigen bundle supervisor
 antigen bundle tmux
@@ -37,14 +37,21 @@ antigen bundle bundler
 antigen bundle rake
 antigen bundle gem
 antigen bundle debian
-#antigen bundle sudo
+antigen bundle sudo
 antigen bundle djui/alias-tips
 
 # Syntax highlighting bundle.
 antigen bundle zsh-users/zsh-syntax-highlighting
 
-# Load the theme.
-antigen theme bureau
+# theme
+antigen theme https://github.com/caiogondim/bullet-train-oh-my-zsh-theme bullet-train
+
+BULLETTRAIN_PROMPT_ORDER=(
+  time
+  context
+  dir
+  git
+)
 
 # Tell antigen that you're done.
 antigen apply
@@ -111,11 +118,6 @@ function next-minor-version {
 alias sp='git flow release start -F $(next-patch-version) && sed -i "1s/.*/## edge\n\n## $(next-patch-version)/" CHANGES.md && mvn versions:set -DnewVersion=$(next-patch-version) -DgenerateBackupPoms=false && git commit -am "version bump"'
 alias sr='git flow release start -F $(next-minor-version) && sed -i "1s/.*/## edge\n\n## $(next-minor-version)/" CHANGES.md && mvn versions:set -DnewVersion=$(next-minor-version) -DgenerateBackupPoms=false && git commit -am "version bump"'
 alias fr='git flow release finish -m "release: " -p $(current-version)'
-
-alias cinnamon-restart="sudo killall -HUP cinnamon"
-
-
-
 
 
 ######################################################################
