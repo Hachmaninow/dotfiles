@@ -17,7 +17,11 @@ Plugin 'bling/vim-bufferline'
 Plugin 'altercation/vim-colors-solarized'
 
 Plugin 'guns/vim-clojure-static'
-Plugin 'tpope/fireplace.vim'
+Plugin 'tpope/vim-fireplace'
+Plugin 'tpope/vim-sexp-mappings-for-regular-people'
+Plugin 'guns/vim-sexp'
+Plugin 'tpope/vim-repeat'
+Plugin 'tpope/vim-surround'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
