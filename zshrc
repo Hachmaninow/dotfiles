@@ -53,6 +53,12 @@ BULLETTRAIN_PROMPT_ORDER=(
   git
 )
 
+BULLETTRAIN_GIT_BG=black
+BULLETTRAIN_GIT_FG=white
+BULLETTRAIN_TIME_BG=black
+BULLETTRAIN_TIME_FG=white
+BULLETTRAIN_DIR_CONTEXT_SHOW=true
+
 # Tell antigen that you're done.
 antigen apply
 
