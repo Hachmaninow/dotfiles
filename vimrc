@@ -93,7 +93,7 @@ set autoindent            " auto-indent
 
 " Search
 set ignorecase            " Make searches case-insensitive.
-set nohlsearch              " Don't continue to highlight searched phrases.
+set hlsearch              " Highlight searched phrases.
 set incsearch             " But do highlight as you type your search.
 
 " Only do this part when compiled with support for autocommands
