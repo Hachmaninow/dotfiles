@@ -1,7 +1,6 @@
 #!/bin/bash
 
-cd
+mkdir ~/tools
 
 # install antigen
-curl -L https://raw.githubusercontent.com/zsh-users/antigen/master/antigen.zsh > antigen.zsh
-source antigen.zsh
+cd ~/tools && git clone https://github.com/zsh-users/antigen.git
