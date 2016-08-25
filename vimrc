@@ -36,7 +36,7 @@ set linebreak             " ...but only at specific characters
 set laststatus=2          " last window always has a statusline
 
 " Clipboard / Copy and paste
-set clipboard=unnamed
+set clipboard=unnamedplus
 
 " Use CTRL-Q to do what CTRL-V used to do
 noremap <C-Q>   	<C-V>
