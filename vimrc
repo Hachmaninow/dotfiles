@@ -38,18 +38,6 @@ set laststatus=2          " last window always has a statusline
 " Clipboard / Copy and paste
 set clipboard=unnamedplus
 
-" Use CTRL-Q to do what CTRL-V used to do
-noremap <C-Q>   	<C-V>
-
-" CTRL-X is Cut
-vnoremap <C-x> "+x
-
-" CTRL-C is Copy
-vnoremap <C-c> "+y
-
-" CTRL-V is Paste
-map <C-v>   	"+gP
-
 " Colors
 set t_Co=256
 
@@ -112,3 +100,4 @@ if has("autocmd")
   " Tread .md files as markdown
   autocmd BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
 endif
+
