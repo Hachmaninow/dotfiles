@@ -81,8 +81,9 @@ set autoindent            " auto-indent
 
 " Search
 set ignorecase            " Make searches case-insensitive.
+set smartcase             " Automatically switch to a case-sensitive search if you use any capital letters.
 set hlsearch              " Highlight searched phrases.
-set incsearch             " But do highlight as you type your search.
+set incsearch             " Start to highlight as you type your search.
 
 " Only do this part when compiled with support for autocommands
 if has("autocmd")
