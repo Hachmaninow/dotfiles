@@ -106,9 +106,6 @@ alias ac='git commit -a --amend'
 alias bv='git commit -am "version bump"'
 
 alias mp='mvn clean package'
-alias mi='mvn install'
-alias md='mvn deploy'
-
 alias lj='bundle exec lockjar lock'
 
 function current-version {
@@ -118,7 +115,7 @@ function next-patch-version {
   grep -E '<version>.*</version>' pom.xml | head -n 1 | grep -E -o '[0-9]+\.[0-9]+\.[0-9]+' | awk -F "." '{print $1 "." $2 "." $3+1}'
 }
 function next-minor-version { 
-  grep -E '<version>.*</version>' pom.xml | head -n 1 | grep -E -o '[0-9]+\.[0-9]+\.[0-9]+' | awk -F "." '{print $1 "." $2+1 "." $3}'
+  grep -E '<version>.*</version>' pom.xml | head -n 1 | grep -E -o '[0-9]+\.[0-9]+\.[0-9]+' | awk -F "." '{print $1 "." $2+1 ".0" }'
 }
 
 alias sp='git flow release start -F $(next-patch-version) && sed -i "1s/.*/## edge\n\n## $(next-patch-version)/" CHANGES.md && mvn versions:set -DnewVersion=$(next-patch-version) -DgenerateBackupPoms=false && git commit -am "version bump"'
