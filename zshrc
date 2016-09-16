@@ -113,6 +113,8 @@ alias ac='git commit -a --amend'
 alias bv='git commit -am "version bump"'
 
 alias mp='mvn clean package'
+alias mi='mvn install'
+alias md='mvn deploy'
 alias lj='bundle exec lockjar lock'
 
 function current-version {
