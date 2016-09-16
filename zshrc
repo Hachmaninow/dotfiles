@@ -19,26 +19,29 @@ UPDATE_ZSH_DAYS=30
 HYPHEN_INSENSITIVE=true
 
 # Bundles from the default repo (robbyrussell's oh-my-zsh).
+antigen bundle aws
+antigen bundle djui/alias-tips
+antigen bundle autojump
+antigen bundle bundler
+antigen bundle capistrano
+antigen bundle colorize
+antigen bundle debian
+antigen bundle docker
+antigen bundle gem
 antigen bundle git
 antigen bundle git-flow-avh
-antigen bundle mvn
-antigen bundle redis-cli
-antigen bundle autojump
-antigen bundle lein
-antigen bundle colorize
 antigen bundle history
+antigen bundle httpie
+antigen bundle jruby
+antigen bundle lein
+antigen bundle mvn
+antigen bundle rake
+antigen bundle redis-cli
+antigen bundle sudo
 antigen bundle supervisor
 antigen bundle tmux
 antigen bundle urltools
-antigen bundle jira
-antigen bundle docker
-antigen bundle jruby
-antigen bundle bundler
-antigen bundle rake
-antigen bundle gem
-antigen bundle debian
-antigen bundle sudo
-antigen bundle djui/alias-tips
+antigen bundle virtualenvwrapper
 
 # Syntax highlighting bundle.
 antigen bundle zsh-users/zsh-syntax-highlighting
