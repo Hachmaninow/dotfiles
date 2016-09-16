@@ -1,6 +1,21 @@
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 
+######################################################################
+# Environment variables used by various tools.
+######################################################################
+
+export GIT_MERGE_AUTOEDIT=no    # do not open editor when committing a merge in git
+
+export JRUBY_OPTS="-J-Xmx4096m -J-XX:MaxMetaspaceSize=2048m -J-Dfile.encoding=UTF-8 -J-XX:+TieredCompilation -J-XX:TieredStopAtLevel=1 -X-C -Xcompile.mode=OFF"
+
+export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
+
+
+######################################################################
+# Use antigen to setup oyh-my-zsh.
+######################################################################
+
 source ~/tools/antigen/antigen.zsh
 
 # Load the oh-my-zsh's library.
@@ -82,17 +97,6 @@ export EDITOR=vim
 
 export WORDCHARS='*?_-[]~=&!$%^(){}<>'
 
-
-
-######################################################################
-# Environment variables used by various tools.
-######################################################################
-
-export GIT_MERGE_AUTOEDIT=no    # do not open editor when committing a merge in git
-
-export JRUBY_OPTS="-J-Xmx4096m -J-XX:MaxMetaspaceSize=2048m -J-Dfile.encoding=UTF-8 -J-XX:+TieredCompilation -J-XX:TieredStopAtLevel=1 -X-C -Xcompile.mode=OFF"
-
-
 ######################################################################
 # Aliases and shortcuts for various development tools.
 ######################################################################
@@ -124,7 +128,6 @@ function next-minor-version {
 alias sp='git flow release start -F $(next-patch-version) && sed -i "1s/.*/## edge\n\n## $(next-patch-version)/" CHANGES.md && mvn versions:set -DnewVersion=$(next-patch-version) -DgenerateBackupPoms=false && git commit -am "version bump"'
 alias sr='git flow release start -F $(next-minor-version) && sed -i "1s/.*/## edge\n\n## $(next-minor-version)/" CHANGES.md && mvn versions:set -DnewVersion=$(next-minor-version) -DgenerateBackupPoms=false && git commit -am "version bump"'
 alias fr='git flow release finish -m "release: " -p $(current-version)'
-
 
 ######################################################################
 # The following code deals with  providing abbreviations in zsh.
