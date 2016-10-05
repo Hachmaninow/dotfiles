@@ -40,7 +40,6 @@ antigen bundle autojump
 antigen bundle bundler
 antigen bundle capistrano
 antigen bundle colorize
-antigen bundle debian
 antigen bundle docker
 antigen bundle gem
 antigen bundle git
