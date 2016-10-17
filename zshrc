@@ -16,7 +16,7 @@ export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
 # Use antigen to setup oyh-my-zsh.
 ######################################################################
 
-source ~/tools/antigen/antigen.zsh
+source /home/hman/tools/antigen/antigen.zsh
 
 # Load the oh-my-zsh's library.
 antigen use oh-my-zsh
