@@ -47,9 +47,12 @@ values."
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '()
 
-   ;; If non nil the frame is maximized when Emacs starts up (Emacs 24.4+ only).
-   ;; Takes effect only if `dotspacemacs-fullscreen-at-startup' is nil.
-   dotspacemacs-maximized-at-startup nil
+   ;; auto-saving
+   auto-save-interval 50
+   auto-save-timeout 1
+   dotspacemacs-auto-save-file-location 'original
+
+   fci-rule-column 100
 
    ;; If non-nil spacemacs will delete any orphan packages, i.e. packages that
    ;; are declared in a layer which is not a member of
@@ -260,13 +263,18 @@ you should place your code here."
   (global-auto-revert-mode)
   (setq org-todo-keywords '((sequence "TODO" "DONE" "WAITING")))
 
-  ;; For clojure 
+  ;; For clojure
   (add-hook 'clojure-mode-hook #'(lambda () (modify-syntax-entry ?_ "w")))
   (add-hook 'clojure-mode-hook #'(lambda () (modify-syntax-entry ?- "w")))
 
   (global-set-key (kbd "C-$") 'forward-symbol)
   (global-set-key (kbd "C-#") 'sp-backward-symbol)
 
+  (add-hook 'before-save-hook 'whitespace-cleanup)
+
+  ;; Activate column indicator in prog-mode and text-mode, except for org-mode
+  (add-hook 'prog-mode-hook 'turn-on-fci-mode)
+  (add-hook 'org-mode-hook 'turn-off-fci-mode)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
