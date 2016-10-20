@@ -31,4 +31,4 @@ mkdir -p ~/.vim/colors
 cp -f $dir/railscasts.vim ~/.vim/colors
 
 # start zsh as any user using oh-my-zsh configuration from hman
-cp -f $dir/start-zsh.sh ~
+cp -f $dir/ß ~ && rm ~/start-zsh.sh 2> /dev/null
