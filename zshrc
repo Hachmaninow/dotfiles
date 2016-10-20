@@ -55,7 +55,11 @@ antigen bundle sudo
 antigen bundle supervisor
 antigen bundle tmux
 antigen bundle urltools
-antigen bundle virtualenvwrapper
+
+if [[ -f /usr/local/bin/virtualenvwrapper.sh ]];
+then
+  antigen bundle virtualenvwrapper
+fi
 
 # Syntax highlighting bundle.
 antigen bundle zsh-users/zsh-syntax-highlighting
