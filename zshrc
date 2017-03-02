@@ -10,7 +10,10 @@ export GIT_MERGE_AUTOEDIT=no    # do not open editor when committing a merge in 
 export JRUBY_OPTS="-J-Xmx4096m -J-XX:MaxMetaspaceSize=2048m -J-Dfile.encoding=UTF-8 -J-XX:+TieredCompilation -J-XX:TieredStopAtLevel=1 -X-C -Xcompile.mode=OFF"
 
 export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
-
+ 
+# Some python tools (eg.scm-source) needs this.
+export LC_ALL=C.UTF-8
+export LANG=C.UTF-8
 
 ######################################################################
 # Use antigen to setup oyh-my-zsh.
@@ -115,6 +118,9 @@ alias fci='git commit -am "$(cm)"'
 alias ac='git commit -a --amend'
 alias bv='git commit -am "version bump"'
 
+alias head='head -n 20'
+
+alias mvn='mvn-color'
 alias mp='mvn clean package'
 alias mi='mvn install'
 alias md='mvn deploy'
