@@ -20,5 +20,5 @@ Create symlinks:
 `~/projects/dotfiles/setup-dotfiles.sh`
 
 Setup vim plugins in vim:
-`:vundleInstall`
+`:VundleInstall`
 
