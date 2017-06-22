@@ -22,3 +22,6 @@ Create symlinks:
 Setup vim plugins in vim:
 `:VundleInstall`
 
+Font installation for powerline see:
+https://powerline.readthedocs.io/en/latest/installation/linux.html#fonts-installation
+
