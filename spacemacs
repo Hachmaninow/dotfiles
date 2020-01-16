@@ -34,7 +34,8 @@ This function should only modify configuration layer settings."
    dotspacemacs-configuration-layers
    '(python
      html
-     clojure
+     (clojure :variables
+              clojure-enable-clj-refactor t)
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press `SPC f e R' (Vim style) or
@@ -496,6 +497,10 @@ before packages are loaded."
     :bind
     ("C-<tab>" . centaur-tabs-forward)
     ("C-<iso-lefttab>" . centaur-tabs-backward))
+
+  (use-package org
+    :config
+    (setq org-startup-indented t))
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
