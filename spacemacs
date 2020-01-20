@@ -191,7 +191,9 @@ It should only modify the values of Spacemacs settings."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press `SPC T n' to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(spacemacs-dark
+   dotspacemacs-themes '(solarized-light
+                         solarized-dark
+                         spacemacs-dark
                          spacemacs-light)
 
    ;; Set the theme for the Spaceline. Supported themes are `spacemacs',
@@ -209,7 +211,7 @@ It should only modify the values of Spacemacs settings."
 
    ;; Default font or prioritized list of fonts.
    dotspacemacs-default-font '("Source Code Pro"
-                               :size 12.0
+                               :size 14.0
                                :weight normal
                                :width normal)
 
@@ -477,7 +479,15 @@ before packages are loaded."
   (spacemacs/toggle-evil-safe-lisp-structural-editing-on-register-hook-clojure-mode)
 
   ;; org mode
+  (use-package org
+    :config
+    (setq org-startup-indented t))
+
   (setq org-bullets-bullet-list '("◉" "■" "▶" "◆" "▲" "○"))
+
+  ;; make C-tab / C-S-tab work in org mode as well
+  (define-key org-mode-map (kbd "C-<tab>") 'centaur-tabs-forward)
+  (define-key org-mode-map (kbd "C-<iso-lefttab>") 'centaur-tabs-backward)
 
   ;; centaur-tabs configuration
   (use-package centaur-tabs
@@ -497,10 +507,6 @@ before packages are loaded."
     :bind
     ("C-<tab>" . centaur-tabs-forward)
     ("C-<iso-lefttab>" . centaur-tabs-backward))
-
-  (use-package org
-    :config
-    (setq org-startup-indented t))
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
