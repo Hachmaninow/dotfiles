@@ -5,7 +5,7 @@ export PATH=$HOME/tools:$PATH
 # Use antigen to setup oyh-my-zsh.
 ######################################################################
 
-source tools/antigen/antigen.zsh
+source $HOME/tools/antigen/antigen.zsh
 
 # Load the oh-my-zsh's library.
 antigen use oh-my-zsh
@@ -34,6 +34,7 @@ antigen bundle lein
 antigen bundle aws
 antigen bundle djui/alias-tips
 antigen bundle zsh-users/zsh-syntax-highlighting
+antigen bundle nvm
 
 # theme
 antigen theme https://github.com/caiogondim/bullet-train-oh-my-zsh-theme bullet-train
