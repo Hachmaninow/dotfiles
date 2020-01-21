@@ -35,7 +35,8 @@ This function should only modify configuration layer settings."
    '(python
      html
      (clojure :variables
-              clojure-enable-clj-refactor t)
+              clojure-enable-clj-refactor t
+              clojure-enable-linters 'clj-kondo)
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press `SPC f e R' (Vim style) or
@@ -54,7 +55,7 @@ This function should only modify configuration layer settings."
      ;;        shell-default-height 30
      ;;        shell-default-position 'bottom)
      ;; spell-checking
-     ;; syntax-checking
+     syntax-checking
      treemacs
      version-control
      )
@@ -363,7 +364,7 @@ It should only modify the values of Spacemacs settings."
    ;;   :size-limit-kb 1000)
    ;; When used in a plist, `visual' takes precedence over `relative'.
    ;; (default nil)
-   dotspacemacs-line-numbers nil
+   dotspacemacs-line-numbers `relative
 
    ;; Code folding method. Possible values are `evil' and `origami'.
    ;; (default 'evil)
@@ -475,20 +476,6 @@ before packages are loaded."
   ;; no lockfiles
   (setq create-lockfiles nil)
 
-  ;; in Clojure use evil-smartparens for much improved navigation and text objects
-  (spacemacs/toggle-evil-safe-lisp-structural-editing-on-register-hook-clojure-mode)
-
-  ;; org mode
-  (use-package org
-    :config
-    (setq org-startup-indented t))
-
-  (setq org-bullets-bullet-list '("◉" "■" "▶" "◆" "▲" "○"))
-
-  ;; make C-tab / C-S-tab work in org mode as well
-  (define-key org-mode-map (kbd "C-<tab>") 'centaur-tabs-forward)
-  (define-key org-mode-map (kbd "C-<iso-lefttab>") 'centaur-tabs-backward)
-
   ;; centaur-tabs configuration
   (use-package centaur-tabs
     :demand
@@ -507,6 +494,38 @@ before packages are loaded."
     :bind
     ("C-<tab>" . centaur-tabs-forward)
     ("C-<iso-lefttab>" . centaur-tabs-backward))
+
+  ;;
+  ;; Org mode
+  ;;
+
+  (use-package org
+    :config
+    (setq org-startup-indented t))
+
+  (setq org-bullets-bullet-list '("◉" "■" "▶" "◆" "▲" "○"))
+
+  ;; make C-tab / C-S-tab work in org mode as well
+  (define-key org-mode-map (kbd "C-<tab>") 'centaur-tabs-forward)
+  (define-key org-mode-map (kbd "C-<iso-lefttab>") 'centaur-tabs-backward)
+
+  ;;
+  ;; Clojure mode
+  ;;
+
+  ;; in Clojure use evil-smartparens for much improved navigation and text objects
+  (spacemacs/toggle-evil-safe-lisp-structural-editing-on-register-hook-clojure-mode)
+
+  ;; Clojure linting with clj-kondo based on Flycheck.
+  (use-package flycheck-clj-kondo
+    :ensure t)
+
+  ;; then install the checker as soon as `clojure-mode' is loaded
+  (use-package clojure-mode
+    :ensure t
+    :config
+    (require 'flycheck-clj-kondo))
+
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
