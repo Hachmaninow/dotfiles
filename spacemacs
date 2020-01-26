@@ -58,6 +58,7 @@ This function should only modify configuration layer settings."
      syntax-checking
      treemacs
      version-control
+     command-log
      )
 
    ;; List of additional packages that will be installed without being
@@ -526,6 +527,16 @@ before packages are loaded."
     :config
     (require 'flycheck-clj-kondo))
 
+  ;; improved visualization of the currently active window
+  (set-face-attribute 'mode-line
+                      nil
+                      :foreground "gray80"
+                      :background "gray25"
+                      :box '(:line-width 1 :style released-button))
+  (set-face-attribute 'mode-line-inactive
+                      nil
+                      :foreground "gray30"
+                      :box '(:line-width 1 :style released-button))
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
