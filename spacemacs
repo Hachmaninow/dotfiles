@@ -488,13 +488,14 @@ before packages are loaded."
           centaur-tabs-set-bar 'under
           x-underline-at-descent-line t
           centaur-tabs-cycle-scope 'tabs
-          centaur-tabs-modified-marker "*"
-          )
+          centaur-tabs-modified-marker "*")
     (centaur-tabs-headline-match)
     (centaur-tabs-mode t)
     :bind
-    ("C-<tab>" . centaur-tabs-forward)
-    ("C-<iso-lefttab>" . centaur-tabs-backward))
+    ("C-<prior>" . centaur-tabs-backward)
+    ("C-<next>" . centaur-tabs-forward))
+
+  (centaur-tabs-group-by-projectile-project)
 
   ;;
   ;; Org mode
@@ -507,8 +508,8 @@ before packages are loaded."
   (setq org-bullets-bullet-list '("◉" "■" "▶" "◆" "▲" "○"))
 
   ;; make C-tab / C-S-tab work in org mode as well
-  (define-key org-mode-map (kbd "C-<tab>") 'centaur-tabs-forward)
-  (define-key org-mode-map (kbd "C-<iso-lefttab>") 'centaur-tabs-backward)
+  ;; (define-key org-mode-map (kbd "C-<tab>") 'centaur-tabs-forward)
+  ;; (define-key org-mode-map (kbd "C-<iso-lefttab>") 'centaur-tabs-backward)
 
   ;;
   ;; Clojure mode
