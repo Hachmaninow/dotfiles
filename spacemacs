@@ -32,7 +32,9 @@ This function should only modify configuration layer settings."
 
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
-   '(python
+   '(yaml
+     javascript
+     python
      html
      (clojure :variables
               clojure-enable-clj-refactor t
@@ -42,7 +44,7 @@ This function should only modify configuration layer settings."
      ;; Uncomment some layer names and press `SPC f e R' (Vim style) or
      ;; `M-m f e R' (Emacs style) to install them.
      ;; ----------------------------------------------------------------
-     ;; auto-completion
+     (auto-completion :disabled-for org git)
      ;; better-defaults
      emacs-lisp
      git
@@ -58,7 +60,6 @@ This function should only modify configuration layer settings."
      syntax-checking
      treemacs
      version-control
-     command-log
      )
 
    ;; List of additional packages that will be installed without being
@@ -458,6 +459,7 @@ This function is called immediately after `dotspacemacs/init', before layer
 configuration.
 It is mostly for variables that should be set before packages are loaded.
 If you are unsure, try setting them in `dotspacemacs/user-config' first."
+
   )
 
 (defun dotspacemacs/user-load ()
@@ -474,8 +476,25 @@ configuration.
 Put your configuration code here, except for variables that should be set
 before packages are loaded."
 
+  ;; overridden key bindings
+
+  ;; like in IDEA use home and end to jump to beginning and end of line
+  (global-set-key (kbd "<home>") 'beginning-of-line)
+  (global-set-key (kbd "<end>") 'end-of-line)
+
+  ;; do not override clipboard with visual selection to allow replacing visual
+  ;; selection by clipboard content
+  ;; https://www.spacemacs.org/doc/FAQ#prevent-the-visual-selection-overriding-my-system-clipboard
+  (fset 'evil-visual-update-x-selection 'ignore)
+
   ;; no lockfiles
   (setq create-lockfiles nil)
+
+  ;; make ex-commands work on selected character range (in contrast to selected line range)
+  (setq evil-ex-visual-char-range t)
+
+  ;; https://www.spacemacs.org/doc/FAQ.html#orgheadline23
+  (spacemacs|disable-company org-mode)
 
   ;; centaur-tabs configuration
   (use-package centaur-tabs
@@ -488,14 +507,15 @@ before packages are loaded."
           centaur-tabs-set-bar 'under
           x-underline-at-descent-line t
           centaur-tabs-cycle-scope 'tabs
+          centaur-tabs-adjust-buffer-order 'left
           centaur-tabs-modified-marker "*")
     (centaur-tabs-headline-match)
     (centaur-tabs-mode t)
+    (centaur-tabs-enable-buffer-reordering)
+    (centaur-tabs-group-by-projectile-project)
     :bind
     ("C-<prior>" . centaur-tabs-backward)
     ("C-<next>" . centaur-tabs-forward))
-
-  (centaur-tabs-group-by-projectile-project)
 
   ;;
   ;; Org mode
@@ -507,9 +527,9 @@ before packages are loaded."
 
   (setq org-bullets-bullet-list '("◉" "■" "▶" "◆" "▲" "○"))
 
-  ;; make C-tab / C-S-tab work in org mode as well
-  ;; (define-key org-mode-map (kbd "C-<tab>") 'centaur-tabs-forward)
-  ;; (define-key org-mode-map (kbd "C-<iso-lefttab>") 'centaur-tabs-backward)
+  ;; make C-up/down navigate between headlines in org mode
+  (define-key org-mode-map (kbd "C-<up>") 'outline-previous-heading)
+  (define-key org-mode-map (kbd "C-<down>") 'outline-next-heading)
 
   ;;
   ;; Clojure mode
@@ -527,6 +547,9 @@ before packages are loaded."
     :ensure t
     :config
     (require 'flycheck-clj-kondo))
+
+  ;; do not use evil mode in Clojure REPL
+  (evil-set-initial-state 'cider-repl-mode 'emacs)
 
   ;; improved visualization of the currently active window
   (set-face-attribute 'mode-line
@@ -554,11 +577,11 @@ This function is called at the very end of Spacemacs initialization."
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (yapfify stickyfunc-enhance pytest pyenv-mode py-isort pippel pipenv pyvenv pip-requirements lsp-python-ms live-py-mode importmagic epc ctable concurrent deferred helm-pydoc helm-gtags helm-cscope xcscope ggtags dap-mode lsp-treemacs bui lsp-mode dash-functional cython-mode counsel-gtags company-anaconda blacken anaconda-mode pythonic yasnippet web-mode web-beautify tagedit slim-mode scss-mode sass-mode pug-mode prettier-js impatient-mode htmlize simple-httpd helm-css-scss haml-mode emmet-mode counsel-css counsel swiper ivy company-web web-completion-data company add-node-modules-path ansi package-build shut-up epl git commander f dash s))))
+    (yaml-mode tern nodejs-repl livid-mode skewer-mode js2-refactor js2-mode js-doc import-js grizzl yasnippet-snippets lsp-ui helm-lsp helm-company helm-c-yasnippet fuzzy company-statistics company-lsp clojure-snippets auto-yasnippet ac-ispell auto-complete yapfify stickyfunc-enhance pytest pyenv-mode py-isort pippel pipenv pyvenv pip-requirements lsp-python-ms live-py-mode importmagic epc ctable concurrent deferred helm-pydoc helm-gtags helm-cscope xcscope ggtags dap-mode lsp-treemacs bui lsp-mode dash-functional cython-mode counsel-gtags company-anaconda blacken anaconda-mode pythonic yasnippet web-mode web-beautify tagedit slim-mode scss-mode sass-mode pug-mode prettier-js impatient-mode htmlize simple-httpd helm-css-scss haml-mode emmet-mode counsel-css counsel swiper ivy company-web web-completion-data company add-node-modules-path ansi package-build shut-up epl git commander f dash s))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(default ((((class color) (min-colors 89)) (:foreground "#657b83" :background "#fdf6e3")))))
 )
