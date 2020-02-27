@@ -86,7 +86,8 @@ alias gpo='gp -u origin `git rev-parse --abbrev-ref HEAD`'
 alias head='head -n 20'
 
 alias mvn='mvn-color'
-alias mp='mvn clean package'
+alias mp='mvn package'
+alias mcp='mvn clean package'
 alias mi='mvn install'
 alias md='mvn deploy'
 
