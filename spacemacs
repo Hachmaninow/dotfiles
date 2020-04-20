@@ -59,7 +59,7 @@ This function should only modify configuration layer settings."
      ;; spell-checking
      syntax-checking
      treemacs
-     version-control
+     (version-control :variables version-control-diff-tool 'diff-hl version-control-global-margin t version-control-diff-side 'left)
      )
 
    ;; List of additional packages that will be installed without being
@@ -69,7 +69,7 @@ This function should only modify configuration layer settings."
    ;; To use a local version of a package, use the `:location' property:
    ;; '(your-package :location "~/path/to/your-package/")
    ;; Also include the dependencies as they will not be resolved automatically.
-   dotspacemacs-additional-packages '(centaur-tabs)
+   ;; dotspacemacs-additional-packages '(centaur-tabs)
 
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -195,9 +195,7 @@ It should only modify the values of Spacemacs settings."
    ;; Press `SPC T n' to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
    dotspacemacs-themes '(solarized-light
-                         solarized-dark
-                         spacemacs-dark
-                         spacemacs-light)
+                         solarized-dark)
 
    ;; Set the theme for the Spaceline. Supported themes are `spacemacs',
    ;; `all-the-icons', `custom', `doom', `vim-powerline' and `vanilla'. The
@@ -214,7 +212,7 @@ It should only modify the values of Spacemacs settings."
 
    ;; Default font or prioritized list of fonts.
    dotspacemacs-default-font '("Source Code Pro"
-                               :size 14.0
+                               :size 12.0
                                :weight normal
                                :width normal)
 
@@ -366,7 +364,7 @@ It should only modify the values of Spacemacs settings."
    ;;   :size-limit-kb 1000)
    ;; When used in a plist, `visual' takes precedence over `relative'.
    ;; (default nil)
-   dotspacemacs-line-numbers `relative
+   dotspacemacs-line-numbers 'visual
 
    ;; Code folding method. Possible values are `evil' and `origami'.
    ;; (default 'evil)
@@ -495,27 +493,6 @@ before packages are loaded."
 
   ;; https://www.spacemacs.org/doc/FAQ.html#orgheadline23
   (spacemacs|disable-company org-mode)
-
-  ;; centaur-tabs configuration
-  (use-package centaur-tabs
-    :demand
-    :config
-    (setq centaur-tabs-style "bar"
-          centaur-tabs-height 32
-          centaur-tabs-set-icons t
-          centaur-tabs-set-modified-marker t
-          centaur-tabs-set-bar 'under
-          x-underline-at-descent-line t
-          centaur-tabs-cycle-scope 'tabs
-          centaur-tabs-adjust-buffer-order 'left
-          centaur-tabs-modified-marker "*")
-    (centaur-tabs-headline-match)
-    (centaur-tabs-mode t)
-    (centaur-tabs-enable-buffer-reordering)
-    (centaur-tabs-group-by-projectile-project)
-    :bind
-    ("C-<prior>" . centaur-tabs-backward)
-    ("C-<next>" . centaur-tabs-forward))
 
   ;;
   ;; Org mode
