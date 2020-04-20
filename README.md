@@ -28,9 +28,12 @@ Setup vim plugins in vim:
 
 ## Tools
 
-broot
+ag https://github.com/ggreer/the_silver_searcher
+fd https://github.com/sharkdp/fd
 jq
 httpie
+broot https://github.com/Canop/broot
+mr http://myrepos.branchable.com/  
 
 ## Fonts etc.
 
